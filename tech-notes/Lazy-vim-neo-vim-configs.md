@@ -41,3 +41,34 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 ```
 Restart nvim.
+
+## 2. Install Copilot in neo-vim
+
+Run:
+```bash
+:Lazy install github/copilot.vim
+~/.config/nvim/lua/plugins/copilot.lua
+```
+Add
+```lua
+return {
+  "zbirenbaum/copilot.lua",
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup({
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    })
+  end,
+  dependencies = {
+    "zbirenbaum/copilot-cmp",
+  },
+}
+```
+Restart nvim.
+
+Then run:
+```bash
+:Copilot auth
+:Copilot status
+```
