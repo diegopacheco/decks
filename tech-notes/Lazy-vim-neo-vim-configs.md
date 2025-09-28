@@ -1,5 +1,22 @@
 # Lazy Vim (neo-vim) Configurations
 
+To install neo-vim via LazyVim do:
+```bash
+# required
+mv ~/.config/nvim{,.bak}
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
+nvim
+```
+More on: https://www.lazyvim.org/installation
+
 ## 1. Make neo-tree always open on the current file path
 
 First install neo-tree. Open nvim and run:
