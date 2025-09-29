@@ -20,3 +20,6 @@
 | Open Preferences | Command + , (comma) |
 | Search Command History | Command + R |    
 | Show/Hide Tranparency | Command + U |
+| Toggle Full Screen for Current Pane | Command + Enter |
+| Show/Hide Tab Bar | Command + Shift + T |
+| Show/Hide Status Bar | Command + Shift + S |
