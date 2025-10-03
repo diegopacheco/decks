@@ -132,3 +132,9 @@ git reset --hard HEAD~3
 ```bash
 git checkout -b master origin/master 
 ```
+
+#### 17. how to see TOP Commiters?
+
+```bash
+git shortlog -s -n
+```
