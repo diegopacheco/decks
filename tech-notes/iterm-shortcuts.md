@@ -8,6 +8,9 @@
 | Close Tab | Command + W |
 | Close Window | Command + Shift + W |
 | Switch Between Tabs | Command + Number (1, 2, 3...) |
+| Previous pane |  Cmd + [ |
+| Next pane | Cmd + ] |
+| Navigate to pane in arrow direction | Cmd + Option + Arrow Keys |
 | Switch Between Windows | Command + ` (backtick) |
 | Split Pane Vertically | Command + D |
 | Split Pane Horizontally | Command + Shift + D |
