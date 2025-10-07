@@ -89,119 +89,48 @@ Usage: /perf @api/users.ts
 
 The key: commands save you from retyping the same instructions repeatedly.
 
-## .claudeignore Files
+## 4. Excluding Files from Claude Context
 
-`.claudeignore` Files
-
-Purpose
-Similar to .gitignore, .claudeignore lets you exclude files/directories from Claude's context. This reduces:
-- Token usage (saves money on API calls)
+Claude Code uses `permissions.deny` in settings.json to exclude files/directories. This reduces:
+- Token usage
 - Noise from irrelevant files
 - Processing time for large codebases
 - Risk of Claude reading sensitive files
 
-Location
-* Place `.claudeignore` in your project root (same directory as .git/)
+Global Exclusions: `~/.claude/settings.json`
+Project Exclusions: `.claude/settings.json`
 
-Syntax
-Same as .gitignore:
-- One pattern per line
-- `#` for comments
-- `*` for wildcards
-- `**` for recursive directories
-- `!` to negate (include) patterns
-
-Example `.claudeignore`
+```json
+{
+  "permissions": {
+    "deny": [
+      "Read(./node_modules/**)",
+      "Read(./vendor/**)",
+      "Read(./venv/**)",
+      "Read(./dist/**)",
+      "Read(./build/**)",
+      "Read(./out/**)",
+      "Read(./**/*.min.js)",
+      "Read(./**/*.bundle.js)",
+      "Read(./**/*.map)",
+      "Read(./package-lock.json)",
+      "Read(./yarn.lock)",
+      "Read(./pnpm-lock.yaml)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/*.key)",
+      "Read(./**/*.pem)",
+      "Read(./credentials.json)",
+      "Read(./coverage/**)",
+      "Read(./.nyc_output/**)",
+      "Read(./.vscode/**)",
+      "Read(./.idea/**)",
+      "Read(./**/*.log)",
+      "Read(./data/**)"
+    ]
+  }
+}
 ```
-# Dependencies
-node_modules/
-vendor/
-.pnp/
-.pnp.js
-
-# Build outputs
-dist/
-build/
-out/
-*.min.js
-*.bundle.js
-*.map
-
-# Package manager lock files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-Gemfile.lock
-poetry.lock
-
-# Environment and secrets
-.env
-.env.*
-*.key
-*.pem
-credentials.json
-
-# Test coverage and reports
-coverage/
-.nyc_output/
-*.lcov
-test-results/
-
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-
-# Generated files
-*.generated.ts
-*_pb.js
-*_pb.d.ts
-
-# Large data files
-*.csv
-*.log
-*.sql
-*.dump
-data/
-
-# Documentation builds
-docs/_build/
-site/
-.docusaurus/
-
-# Cache directories
-.cache/
-.next/
-.nuxt/
-.turbo/
-
-# But DO include specific config
-!.env.example
-!docs/architecture.md
-```
-
-Real-World Scenario
-
-Before .claudeignore:
-- Claude reads 50MB of node_modules searching for a function
-- Costs 200K tokens
-- Takes 30 seconds
-- Returns irrelevant results from dependencies
-
-After .claudeignore:
-- Claude only reads your source code (2MB)
-- Costs 8K tokens
-- Takes 2 seconds
-- Returns accurate results from your code
-
-Strategic Exclusions - Always exclude:
-- node_modules/, vendor/, venv/
-- Build artifacts
-- Lock files
-- Large binary files
-- Generated code
 
 ## 5. Non-Obvious Use Cases for Claude Code
 
@@ -221,7 +150,7 @@ discrepancies, missing values, or environment-specific bugs
 radius and identify all affected consumers
 8. Performance Archaeology - Correlate git history with performance metrics to identify which commits introduced
 regressions by analyzing algorithmic complexity changes
-9. English Spealling and Grammar Checking - Review technical writing, comments, and documentation for clarity, conciseness.
+9. English Spelling and Grammar Checking - Review technical writing, comments, and documentation for clarity, conciseness.
 10. API Evolution Planning - Analyze existing API usage patterns across consumers to design backward-compatible changes and generate migration guides.
 11. Build Failure Forensics & Troubleshooting - Analyze build logs, recent commits, and dependency changes together to pinpoint root cause when CI mysteriously breaks.
 12. Feature Flag Archaeology - Find stale feature flags by cross-referencing flag definitions with usage, creation
