@@ -109,3 +109,8 @@ radius and identify all affected consumers
 regressions by analyzing algorithmic complexity changes
 9. English Spealling and Grammar Checking - Review technical writing, comments, and documentation for clarity, conciseness.
 10. API Evolution Planning - Analyze existing API usage patterns across consumers to design backward-compatible changes and generate migration guides.
+11. Build Failure Forensics & Troubleshooting - Analyze build logs, recent commits, and dependency changes together to pinpoint root cause when CI mysteriously breaks.
+12. Feature Flag Archaeology - Find stale feature flags by cross-referencing flag definitions with usage, creation
+  dates, and A/B test completion to safely remove technical debt.
+13. Security Audit Automation - Scan codebases for common security anti-patterns, outdated dependencies, and
+  misconfigurations.
