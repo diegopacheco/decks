@@ -26,3 +26,65 @@ Use Slash Commands for Repeated Tasks
 - Common use cases: code review, test generation, refactoring patterns
 - Personal commands in ~/.claude/commands/ for all projects
 - Name them short and memorable (e.g., /fix, /test, /deploy)
+
+Examples:
+
+Example 1: Code Review Command
+```
+File: .claude/commands/review.md
+Review the changes in this file for:
+- Bugs and edge cases
+- Performance issues
+- Security vulnerabilities
+- Code style and best practices
+- Missing error handling
+
+Provide specific line numbers for issues found.
+
+Usage: /review @src/auth.js
+```
+
+Example 2: Test Generation Command
+```
+File: .claude/commands/tests.md
+Generate comprehensive tests for $1 covering:
+- Happy path scenarios
+- Edge cases
+- Error conditions
+- Boundary values
+
+Use the existing test patterns in this project.
+
+Usage: /tests src/utils/validator.js
+```
+
+Example 3: Refactor Command
+```
+File: ~/.claude/commands/clean.md
+Refactor $ARGUMENTS to:
+- Remove code duplication
+- Improve naming and clarity
+- Simplify complex logic
+- Maintain exact same behavior
+
+Run tests after refactoring to verify nothing broke.
+
+Usage: /clean src/payment/processor.js
+```
+
+Example 4: Performance Audit
+```
+File: .claude/commands/perf.md
+Analyze $1 for performance issues:
+- Unnecessary loops or iterations
+- Database query optimization
+- Memory allocations
+- Blocking operations
+- Caching opportunities
+
+Suggest specific optimizations with code snippets.
+
+Usage: /perf @api/users.ts
+```
+
+The key: commands save you from retyping the same instructions repeatedly.
