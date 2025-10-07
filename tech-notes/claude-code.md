@@ -89,7 +89,121 @@ Usage: /perf @api/users.ts
 
 The key: commands save you from retyping the same instructions repeatedly.
 
-## 4. Non-Obvious Use Cases for Claude Code
+## .claudeignore Files
+
+`.claudeignore` Files
+
+Purpose
+Similar to .gitignore, .claudeignore lets you exclude files/directories from Claude's context. This reduces:
+- Token usage (saves money on API calls)
+- Noise from irrelevant files
+- Processing time for large codebases
+- Risk of Claude reading sensitive files
+
+Location
+* Place `.claudeignore` in your project root (same directory as .git/)
+
+Syntax
+Same as .gitignore:
+- One pattern per line
+- `#` for comments
+- `*` for wildcards
+- `**` for recursive directories
+- `!` to negate (include) patterns
+
+Example `.claudeignore`
+```
+# Dependencies
+node_modules/
+vendor/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+*.min.js
+*.bundle.js
+*.map
+
+# Package manager lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Gemfile.lock
+poetry.lock
+
+# Environment and secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+
+# Test coverage and reports
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Generated files
+*.generated.ts
+*_pb.js
+*_pb.d.ts
+
+# Large data files
+*.csv
+*.log
+*.sql
+*.dump
+data/
+
+# Documentation builds
+docs/_build/
+site/
+.docusaurus/
+
+# Cache directories
+.cache/
+.next/
+.nuxt/
+.turbo/
+
+# But DO include specific config
+!.env.example
+!docs/architecture.md
+```
+
+Real-World Scenario
+
+Before .claudeignore:
+- Claude reads 50MB of node_modules searching for a function
+- Costs 200K tokens
+- Takes 30 seconds
+- Returns irrelevant results from dependencies
+
+After .claudeignore:
+- Claude only reads your source code (2MB)
+- Costs 8K tokens
+- Takes 2 seconds
+- Returns accurate results from your code
+
+Strategic Exclusions - Always exclude:
+- node_modules/, vendor/, venv/
+- Build artifacts
+- Lock files
+- Large binary files
+- Generated code
+
+## 5. Non-Obvious Use Cases for Claude Code
 
 1. Git Archaeology - Investigate why code was written a certain way by analyzing git history, blame annotations, and
 commit messages together with current code structure
