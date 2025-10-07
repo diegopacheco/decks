@@ -88,3 +88,24 @@ Usage: /perf @api/users.ts
 ```
 
 The key: commands save you from retyping the same instructions repeatedly.
+
+## Non-Obvious Use Cases for Claude Code
+
+1. Git Archaeology - Investigate why code was written a certain way by analyzing git history, blame annotations, and
+commit messages together with current code structure
+2. Dependency Auditing - Scan package.json/requirements.txt/go.mod across multiple projects to identify version
+inconsistencies, security vulnerabilities, and upgrade paths
+3. Documentation Reverse Engineering - Generate accurate technical documentation by reading actual implementation
+rather than outdated docs, including API contracts, state machines, and data flows
+4. Codebase Onboarding Scripts - Create personalized learning paths by analyzing a new repository's structure,
+identifying entry points, and generating reading orders for understanding the system
+5. Test Data Generation - Analyze schema definitions, database models, and validation rules to generate realistic test
+fixtures that respect all constraints and edge cases
+6. Configuration Drift Detection - Compare config files across environments (dev/staging/prod) to identify
+discrepancies, missing values, or environment-specific bugs
+7. Refactoring Impact Analysis - Before making changes, analyze call graphs and dependency trees to predict blast
+radius and identify all affected consumers
+8. Performance Archaeology - Correlate git history with performance metrics to identify which commits introduced
+regressions by analyzing algorithmic complexity changes
+9. English Spealling and Grammar Checking - Review technical writing, comments, and documentation for clarity, conciseness.
+10. API Evolution Planning - Analyze existing API usage patterns across consumers to design backward-compatible changes and generate migration guides.
