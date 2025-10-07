@@ -1,12 +1,12 @@
 # Claude Code 
 
-## Global Instructions
+## 1. Global Instructions
 
 Global instructions will work for all directories, all sessions and all projects you do you in your machine with Claude Code. If I may draw a parallel this feature is the same as `~/.bashrc` or `~/.zshrc` for Claude.
 
 This file must be placed in `~/.claude/CLAUDE.md` it control Claude code guidelines for all projects. Them you can write in any structure or format - instructions you want Claude to follow.
 
-## Prompt Advice
+## 2. Prompt Advice
 
 Be Explicit in Prompts
 
@@ -18,7 +18,7 @@ Be Explicit in Prompts
 - Claude tracks context across the session
 - Easier to review and iterate on smaller changes
 
-## Create custom commands
+## 3. Create custom commands
 
 Use Slash Commands for Repeated Tasks
 
@@ -89,7 +89,7 @@ Usage: /perf @api/users.ts
 
 The key: commands save you from retyping the same instructions repeatedly.
 
-## Non-Obvious Use Cases for Claude Code
+## 4. Non-Obvious Use Cases for Claude Code
 
 1. Git Archaeology - Investigate why code was written a certain way by analyzing git history, blame annotations, and
 commit messages together with current code structure
