@@ -40,10 +40,6 @@ if [ -f "$GITIGNORE" ]; then
   done < "$GITIGNORE"
 fi
 
-if ! grep -q "\"$SETTINGS_ENTRY\"" "$SETTINGS_FILE" 2>/dev/null; then
-  ADDED_DENY+=("$SETTINGS_ENTRY")
-fi
-
 if [ ${#ADDED_DENY[@]} -gt 0 ]; then
   python3 -c "
 import json
