@@ -419,6 +419,12 @@ Virtual Threads (A) is the clear winner because:
 
 Virtual threads emerge as the optimal solution. They elegantly handle the mixed workload by dynamically managing thread resources. When slow requests block, they free up platform threads, allowing fast requests to continue processing seamlessly. This approach prevents thread pool exhaustion and maximizes system responsiveness, making it the most efficient threading model for scenarios with varied request durations.
 
+## CPU Pinning Considerations
+
+Java 24 improves virtual thread performance with CPU pinning optimizations. By pinning carrier threads to specific CPU cores, the JVM reduces context-switching overhead and enhances cache locality. This is particularly beneficial in high-concurrency environments where virtual threads frequently unmount and remount on carrier threads.
+
+Also look: https://mikemybytes.com/2025/04/09/java24-thread-pinning-revisited/
+
 ## Summary
 
 Virtual threads represent a **paradigm shift** in how we handle concurrency in Java applications. They make it possible to write simple, blocking code that scales to handle massive concurrency—something previously only possible with complex reactive programming.
