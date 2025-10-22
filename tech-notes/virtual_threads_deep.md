@@ -297,6 +297,20 @@ try {
 
 ---
 
+## Netty vs Virtual Threads
+
+Where Netty Might Win 🏆
+* Absolute maximum throughput - Netty's zero-copy, direct buffer manipulation can be faster for pure network I/O
+* Very low latency requirements - Event loop has less overhead than virtual thread mounting/unmounting
+* Protocol-level control - Custom protocols, WebSockets, TCP servers benefit from Netty's control
+
+Where Virtual Threads Win 🏆
+
+* Development velocity - 10x easier to write and maintain
+* Debugging - Stack traces are normal, not callback hell
+* Mixed workloads - Easy to call blocking APIs (JDBC, legacy libraries)
+* Team productivity - Most developers understand blocking code
+
 ## Summary
 
 Virtual threads represent a **paradigm shift** in how we handle concurrency in Java applications. They make it possible to write simple, blocking code that scales to handle massive concurrency—something previously only possible with complex reactive programming.
