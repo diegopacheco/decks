@@ -311,6 +311,114 @@ Where Virtual Threads Win 🏆
 * Mixed workloads - Easy to call blocking APIs (JDBC, legacy libraries)
 * Team productivity - Most developers understand blocking code
 
+# Threading Model Comparison: Mixed Fast & Slow Requests
+
+## Question
+
+Let's say I have a mix of fast and slow requests. Most fast requests get delivered in ~1ms, the slow ones take 60s, but are very few. Consider 3 scenarios:
+
+- **Scenario A:** Spring Boot 3.5.6 + Tomcat + Virtual Threads + 64 vCPUs
+- **Scenario B:** Spring Boot 3.5.6 + Tomcat (no virtual threads) = thread-per-request model + 64 vCPUs
+- **Scenario C:** Spring Boot 3.5.6 + Netty with I/O worker pool = 64 and Hikari CP pool = 64 and also 64 vCPUs
+
+Which one is best or worst and why?
+
+---
+
+## Analysis
+
+### Key Factors
+
+- Mix of fast (1ms) and slow (60s) requests
+- Slow requests are rare
+- 64 vCPUs available
+- Need to consider throughput, resource utilization, and handling of slow requests
+
+---
+
+## Ranking: Best to Worst
+
+### 🥇 Scenario A: Virtual Threads - BEST
+
+#### Why It Wins
+
+- When slow requests block (DB, I/O), virtual threads **unmount** and free the underlying platform thread
+- Fast requests continue processing unimpeded on those freed platform threads
+- Can handle thousands of concurrent slow requests without thread exhaustion
+- Zero code changes needed—write simple blocking code
+- With 64 vCPUs, you have 64 carrier threads that can efficiently multiplex thousands of virtual threads
+
+#### Trade-offs
+
+- Slight overhead for virtual thread creation/scheduling (negligible)
+- Requires Java 21+
+
+---
+
+### 🥈 Scenario C: Netty + Worker Pool - MIDDLE (with a BIG caveat)
+
+#### The Problem
+
+You mentioned **Hikari CP pool = 64**. Hikari is a JDBC connection pool—that's **blocking I/O**. Using blocking JDBC calls with Netty is an **anti-pattern** that kills performance.
+
+#### IF Using R2DBC (Non-blocking DB Driver)
+
+**Good:**
+- 64 event loop threads efficiently handle thousands of concurrent requests
+- Slow requests don't block worker threads (everything is async/reactive)
+- Excellent throughput for I/O-bound workloads
+
+#### IF Using JDBC (Blocking)
+
+**Terrible:**
+- Each slow 60s request blocks one of your 64 worker threads
+- Just a few slow requests can starve your entire event loop
+- Fast requests get queued behind blocked workers
+- This scenario becomes **worse than platform threads**
+
+#### Complexity Cost
+
+- Requires reactive programming (Reactor, WebFlux, R2DBC)
+- Much harder to write and debug
+- Any blocking call (JDBC, blocking APIs) breaks the model
+
+---
+
+### 🥉 Scenario B: Platform Threads - WORST
+
+#### Why It Struggles
+
+- Default Tomcat thread pool ≈ 200 threads
+- Each 60s slow request holds a thread for the entire duration
+- With only ~4 concurrent slow requests, you've tied up 240 seconds of thread time
+- If slow requests spike even slightly, thread pool exhaustion occurs
+- Fast requests get queued waiting for available threads
+
+#### You Could Tune It
+
+- Increase thread pool to 1000+ threads
+- But now you're wasting memory and context-switching overhead
+- Still fundamentally inefficient—threads just sitting idle during I/O
+
+---
+
+## The Verdict
+
+**For your scenario: A > C > B**
+
+Virtual Threads (A) is the clear winner because:
+
+1. ✅ Handles slow requests gracefully without blocking threads
+2. ✅ Fast requests stay fast
+3. ✅ Simple blocking code (no reactive complexity)
+4. ✅ Efficient resource utilization
+
+**Scenario C** could be competitive if you're using a fully non-blocking stack (R2DBC, reactive HTTP clients), but the complexity cost is high. If you're using JDBC (Hikari suggests you are), it's actually worse than platform threads.
+
+**Scenario B** is the worst here specifically because slow requests starve the thread pool, impacting fast requests.
+
+Virtual threads emerge as the optimal solution. They elegantly handle the mixed workload by dynamically managing thread resources. When slow requests block, they free up platform threads, allowing fast requests to continue processing seamlessly. This approach prevents thread pool exhaustion and maximizes system responsiveness, making it the most efficient threading model for scenarios with varied request durations.
+
 ## Summary
 
 Virtual threads represent a **paradigm shift** in how we handle concurrency in Java applications. They make it possible to write simple, blocking code that scales to handle massive concurrency—something previously only possible with complex reactive programming.
