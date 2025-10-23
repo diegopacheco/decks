@@ -1,4 +1,8 @@
 # Claude Code 
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 <!---toc start-->
 
 * [Claude Code](#claude-code)
@@ -9,8 +13,10 @@
   * [5. Non-Obvious Use Cases for Claude Code](#5-non-obvious-use-cases-for-claude-code)
   * [6. Advanced Pipelines](#6-advanced-pipelines)
   * [7. Bash on Asteroids](#7-bash-on-asteroids)
+  * [8. Custom Agents](#8-custom-agents)
 
 <!---toc end-->
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 1. Global Instructions
@@ -235,3 +241,7 @@ Result:
 ```
 COLD 10
 ```
+
+## 8. Custom Agents
+
+Claude code allow you to create custom agents. The cool thing is that it can generate the agent based in a prompt you give it. For example you can create a custom agent to help you with code reviews. More here: [custom-agents.md](custom-agents-cc/README.md)
