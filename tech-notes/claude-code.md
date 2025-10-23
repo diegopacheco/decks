@@ -1,7 +1,8 @@
 # Claude Code 
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**  *generated with [DocToc](https://github.com/ktechhub/doctoc)*
 
 <!---toc start-->
 
@@ -14,10 +15,12 @@
   * [6. Advanced Pipelines](#6-advanced-pipelines)
   * [7. Bash on Asteroids](#7-bash-on-asteroids)
   * [8. Custom Agents](#8-custom-agents)
+  * [9. ultrathink](#9-ultrathink)
 
 <!---toc end-->
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 ## 1. Global Instructions
 
@@ -245,3 +248,11 @@ COLD 10
 ## 8. Custom Agents
 
 Claude code allow you to create custom agents. The cool thing is that it can generate the agent based in a prompt you give it. For example you can create a custom agent to help you with code reviews. More here: [custom-agents.md](custom-agents-cc/README.md)
+
+## 9. ultrathink
+
+If you want claude code to reason more deeply about a problem you can use ultrathink. 
+The main idea is to force claude to think multiple times about the problem before answering. 
+
+Example <br/>
+<img src="images/ultrathink.png" width="600"/>
