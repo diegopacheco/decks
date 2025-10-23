@@ -166,25 +166,45 @@ pipeline.sh
 ```
 #!/bin/bash
 
-# Stage 1: Code generation
-claude -p "Generate a REST API for user management in Python FastAPI" > api_draft.py
+claude -p "Write a complete working REST API for user management using Python FastAPI with endpoints for create, read, update, delete users. Include all imports and a main block to run the server. Output executable Python code ONLY - no markdown, no explanations, no code blocks. Start with: from fastapi" >api_draft.py
+echo "Step 1 done"
 
-# Stage 2: Security review agent
-claude -p "Review this code for security vulnerabilities and suggest fixes:
-$(cat api_draft.py)" > security_review.md
+claude -p "Review this Python code for security vulnerabilities:
 
-# Stage 3: Apply fixes
-claude -p "Here's the original code:
+\`\`\`python
 $(cat api_draft.py)
+\`\`\`
 
-Here's the security review:
+List all security issues and recommended fixes." >security_review.md
+echo "Step 2 done"
+
+claude -p "Fix all security issues in this Python code:
+
+\`\`\`python
+$(cat api_draft.py)
+\`\`\`
+
+Security issues found:
 $(cat security_review.md)
 
-Apply all security fixes and output the improved code." > api_secure.py
+Output the complete fixed Python code with all security improvements applied. Output executable code ONLY - no markdown, no explanations, no code blocks around the code. Start with: from fastapi" >api_secure.py
+echo "Step 3 done"
 
-# Stage 4: Add tests
-claude -p "Generate comprehensive pytest tests for this code:
-$(cat api_secure.py)" > test_api.py
+claude -p "Write comprehensive pytest tests for this API:
+
+\`\`\`python
+$(cat api_secure.py)
+\`\`\`
+
+Output executable Python test code ONLY - no markdown, no explanations, no code blocks. Start with: import pytest" >test_api.py
+echo "Step 4 done"
+
+cat > run.sh << 'EOF'
+#!/bin/bash
+python3 api_secure.py
+EOF
+chmod +x run.sh
+echo "Step 5 done"
 ```
 
 ## 7. Bash on Asteroids
