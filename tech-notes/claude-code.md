@@ -160,7 +160,7 @@ regressions by analyzing algorithmic complexity changes
 
 ## 6. Advanced Pipelines
 
-Here the idea is that you can create a script to automate complex flow, so you do not need to type a huge prompt all the time.
+Here the idea is that you can create a script to automate complex flow, so you do not need to type a huge prompt all the time. This code could run in a jenkins job, or even dirrectly in your terminal.
 
 pipeline.sh
 ```
@@ -193,7 +193,12 @@ You can use Claude Code to help you write bash scripts for automating complex ta
 ```
 #!/bin/bash
 
-claude -p "fetch the weather in New York City(Fahrenheit) from (https://open-meteo.com/) and save it to weather.txt. You have permission to write a script." | \
-claude -p "convert fahrenheit to celsius" > weather_celsius.txt | \
-claude -p "tell me if today is a HOR or COLD day based on the temperature in weather_celsius.txt" > weather_report.txt | echo weather_report.txt
+curl -s "wttr.in/London?format=3" | \
+claude -p "Extract only the temperature number in Celsius from this text, output just the number" | tee weather_celsius.txt | \
+xargs -I {} claude -p 'Is {} Celsius HOT or COLD? Output only HOT or COLD followed by the temperature value in Celsius' | tee weather_report.txt
+```
+
+Result:
+```
+COLD 10
 ```
