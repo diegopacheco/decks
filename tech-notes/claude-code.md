@@ -157,3 +157,43 @@ regressions by analyzing algorithmic complexity changes
   dates, and A/B test completion to safely remove technical debt.
 13. Security Audit Automation - Scan codebases for common security anti-patterns, outdated dependencies, and
   misconfigurations.
+
+## 6. Advanced Pipelines
+
+Here the idea is that you can create a script to automate complex flow, so you do not need to type a huge prompt all the time.
+
+pipeline.sh
+```
+#!/bin/bash
+
+# Stage 1: Code generation
+claude -p "Generate a REST API for user management in Python FastAPI" > api_draft.py
+
+# Stage 2: Security review agent
+claude -p "Review this code for security vulnerabilities and suggest fixes:
+$(cat api_draft.py)" > security_review.md
+
+# Stage 3: Apply fixes
+claude -p "Here's the original code:
+$(cat api_draft.py)
+
+Here's the security review:
+$(cat security_review.md)
+
+Apply all security fixes and output the improved code." > api_secure.py
+
+# Stage 4: Add tests
+claude -p "Generate comprehensive pytest tests for this code:
+$(cat api_secure.py)" > test_api.py
+```
+
+## 7. Bash on Asteroids
+
+You can use Claude Code to help you write bash scripts for automating complex tasks. You can combine any program with bash + claude being a super powerful orchestrator.
+```
+#!/bin/bash
+
+claude -p "fetch the weather in New York City(Fahrenheit) from (https://open-meteo.com/) and save it to weather.txt. You have permission to write a script." | \
+claude -p "convert fahrenheit to celsius" > weather_celsius.txt | \
+claude -p "tell me if today is a HOR or COLD day based on the temperature in weather_celsius.txt" > weather_report.txt | echo weather_report.txt
+```
