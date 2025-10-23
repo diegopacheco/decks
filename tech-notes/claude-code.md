@@ -1,4 +1,17 @@
 # Claude Code 
+<!---toc start-->
+
+* [Claude Code](#claude-code)
+  * [1. Global Instructions](#1-global-instructions)
+  * [2. Prompt Advice](#2-prompt-advice)
+  * [3. Create custom commands](#3-create-custom-commands)
+  * [4. Excluding Files from Claude Context](#4-excluding-files-from-claude-context)
+  * [5. Non-Obvious Use Cases for Claude Code](#5-non-obvious-use-cases-for-claude-code)
+  * [6. Advanced Pipelines](#6-advanced-pipelines)
+  * [7. Bash on Asteroids](#7-bash-on-asteroids)
+
+<!---toc end-->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 1. Global Instructions
 
