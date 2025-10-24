@@ -19,6 +19,7 @@ This repository contains a curated collection of concepts, guidance about Softwa
 - [Pagination](PAGINATION.md) - Breaking large datasets into pages
 - [Partition](PARTITION.md) - Data distribution strategies
 - [Queue](QUEUE.md) - Asynchronous message processing
+- [Retry](RETRY.md) - Handling transient failures with retry strategies
 - [Source of Truth](SOURCE_OF_TRUTH.md) - Authoritative data source
 - [Stateless vs Stateful Services](STATELESS_VS_STATEFULL_SVC.md) - Service state management
 - [Web Hook](WEB_HOOK.md) - Event-driven HTTP callbacks
