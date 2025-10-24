@@ -13,6 +13,7 @@ Philosophy:
 
 Pratices:
 - [Architecture Review](ARCH_REVIEW.md) - Documenting architecture for communication and improvements
+- [Ownership](OWNERSHIP.md) - Extreme ownership and proactive behavior for architects
 
 Concepts and Patterns:
 - [ACID](ACID.md) - Relational database transaction properties
