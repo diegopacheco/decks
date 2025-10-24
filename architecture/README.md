@@ -13,9 +13,12 @@ Philosophy:
 - [Service Orientation](SO.md) - Services as first-class citizens
 
 Pratices:
+- [Attention to Detail](ATTENTION_TO_DETAIL.md) - Architect with precision and care
 - [Architecture Review](ARCH_REVIEW.md) - Documenting architecture for communication and improvements
+- [Design First](DESIGN_FIRST.md) - Think first, act later
 - [Ownership](OWNERSHIP.md) - Extreme ownership and proactive behavior for architects
 - [Reading Code](READING_CODE.md) - Importance of reading code as an architect
+- [Working on Trenches](WORKING_ON_TRENCHES.md) - Hands-on, front-line work with the team.
 
 Concepts and Patterns:
 - [ACID](ACID.md) - Relational database transaction properties
