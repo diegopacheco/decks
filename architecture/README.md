@@ -24,6 +24,7 @@ Concepts and Patterns:
 - [BFF Pattern](BFF_PATTERN.md) - Backend for Frontend pattern
 - [Cache](CACHE.md) - Data storage for faster access
 - [Connection Pool](CONNECTION_POOL.md) - Database connection reuse
+- [Feature Flags](FEATURE_FLAGS.md) - Runtime configuration and gradual rollouts
 - [Idempotency](IDEMPOTENCY.md) - Safe operation repetition
 - [Load Balancer](LB.md) - Traffic distribution across servers
 - [Message Patterns](MESSAGE_PATTERNS.md) - Publish/Subscribe, Point-to-Point messaging
@@ -33,6 +34,7 @@ Concepts and Patterns:
 - [Partition](PARTITION.md) - Data distribution strategies
 - [Queue](QUEUE.md) - Asynchronous message processing
 - [Retry](RETRY.md) - Handling transient failures with retry strategies
+- [Schema Evolution](SCHEMA_EVOLUTION.md) - Forward/backward compatibility for APIs
 - [Source of Truth](SOURCE_OF_TRUTH.md) - Authoritative data source
 - [Stateless vs Stateful Services](STATELESS_VS_STATEFULL_SVC.md) - Service state management
 - [Web Hook](WEB_HOOK.md) - Event-driven HTTP callbacks
