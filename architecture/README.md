@@ -4,6 +4,17 @@ This repository contains a curated collection of concepts, guidance about Softwa
 
 ## Table of Contents
 
+Philosophy:
+- [Crystall Ball](CRYSTAL_BALL.md) - Think about future changes
+- [Defensive Programming](DEFENSIVE.md) - Anticipating and handling errors
+- [Frontend vs Backend](FRONTEND_VS_BACKEND.md) - Design philosophy differences
+- [Open Source First](OSS.md) - Favor open source solutions always
+- [Service Orientation](SO.md) - Services as first-class citizens
+
+Pratices:
+- [Architecture Review](ARCH_REVIEW.md) - Documenting architecture for communication and improvements
+
+Concepts and Patterns:
 - [ACID](ACID.md) - Relational database transaction properties
 - [API Gateway](API_GATEWAY.md) - Single entry point for microservices
 - [Authentication & Authorization](AUTHENT.md) - Identity verification and access control
@@ -11,10 +22,10 @@ This repository contains a curated collection of concepts, guidance about Softwa
 - [BFF Pattern](BFF_PATTERN.md) - Backend for Frontend pattern
 - [Cache](CACHE.md) - Data storage for faster access
 - [Connection Pool](CONNECTION_POOL.md) - Database connection reuse
-- [Frontend vs Backend](FRONTEND_VS_BACKEND.md) - Design philosophy differences
 - [Idempotency](IDEMPOTENCY.md) - Safe operation repetition
 - [Load Balancer](LB.md) - Traffic distribution across servers
 - [Message Patterns](MESSAGE_PATTERNS.md) - Publish/Subscribe, Point-to-Point messaging
+- [Message Id](MESSAGE_ID.md) - Unique identifier for tracing requests
 - [Optimistic vs Pessimistic Locking](OPLOCKING.md) - Concurrency control strategies
 - [Pagination](PAGINATION.md) - Breaking large datasets into pages
 - [Partition](PARTITION.md) - Data distribution strategies
