@@ -7,6 +7,7 @@ This repository contains a curated collection of concepts, guidance about Softwa
 Philosophy:
 - [Crystall Ball](CRYSTAL_BALL.md) - Think about future changes
 - [Defensive Programming](DEFENSIVE.md) - Anticipating and handling errors
+- [Doing Hard Things](DOING_HARD_THINGS.md) - Tackling complex problems head-on
 - [Frontend vs Backend](FRONTEND_VS_BACKEND.md) - Design philosophy differences
 - [Open Source First](OSS.md) - Favor open source solutions always
 - [Service Orientation](SO.md) - Services as first-class citizens
