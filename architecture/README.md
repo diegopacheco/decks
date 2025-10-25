@@ -18,6 +18,7 @@ Pratices:
 - [Design First](DESIGN_FIRST.md) - Think first, act later
 - [Ownership](OWNERSHIP.md) - Extreme ownership and proactive behavior for architects
 - [Reading Code](READING_CODE.md) - Importance of reading code as an architect
+- [Monthly Review](MONTHLY_REVIEW.md) - See the whole picture.
 - [Working on Trenches](WORKING_ON_TRENCHES.md) - Hands-on, front-line work with the team.
 
 Concepts and Patterns:
