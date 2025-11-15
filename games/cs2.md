@@ -31,3 +31,17 @@ mp_restartgame 1   // Restart the game after 1 second
 2. Go to the "Settings" menu.
 3. Go to "Audio".
 4. Adjust the "Master Volume" and "Main Menu Ambience Volume".
+
+## Group Play
+
+The Host:
+
+1. Open CS2.
+2. Go to the "Play" menu.
+3. Go to "Practice".
+4. Go to "Casual".
+5. Make sure "Open Party" is enabled.
+
+The Guests:
+1. Open CS2.
+2. Click on "Strange"(must be steam friend) and join game. 
