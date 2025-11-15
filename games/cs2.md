@@ -32,6 +32,14 @@ mp_restartgame 1   // Restart the game after 1 second
 3. Go to "Audio".
 4. Adjust the "Master Volume" and "Main Menu Ambience Volume".
 
+## During Game
+
+Press:
+```
+b -> to open buy menu
+m -> to switch teams or become a spectator
+```
+
 ## Group Play
 
 The Host:
