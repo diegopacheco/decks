@@ -20,3 +20,9 @@
 | Zoom Out | Command + - |
 | Reset Zoom | Command + 0 |
 
+## Render Page as Mobile App
+
+1. Open Chrome Developer Tools: `FN + F12`
+2. Click on the "Toggle Device Toolbar" icon or press `Command + Shift + M`
+3. Select the desired aspect ratio from the dropdown menu at the top of the page.
+4. Go back to normal: `Command + Shift + M`
